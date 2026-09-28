@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
+
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'DM Serif Display', serif;
+  --font-sans: 'DM Sans', sans-serif;
+
+  --color-background: #050d1a;
+  --color-foreground: #f1f5f9;
+  --color-card: #0f172a;
+  --color-card-foreground: #f1f5f9;
+  --color-primary: #06b6d4;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #1e293b;
+  --color-secondary-foreground: #94a3b8;
+  --color-muted: #1e293b;
+  --color-muted-foreground: #64748b;
+  --color-accent: #22d3ee;
+  --color-accent-foreground: #0f172a;
+  --color-border: #1e293b;
+  --color-ring: #06b6d4;
+  --color-destructive: #f87171;
+
+  --radius: 0.75rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #050d1a;
+  color: #f1f5f9;
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+  button:not(:disabled),
+  select:not(:disabled),
+  [role='button']:not([aria-disabled='true']),
+  input[type='file']:not(:disabled),
+  input[type='checkbox']:not(:disabled),
+  input[type='radio']:not(:disabled) {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  select:disabled,
+  input:disabled,
+  textarea:disabled {
+    cursor: not-allowed;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
