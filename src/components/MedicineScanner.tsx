@@ -82,8 +82,8 @@ export default function MedicineScanner() {
       const b64 = await toBase64(file);
       const { result: data } = await analyzeMedicine(b64, mimeType);
       setResult(data);
-    } catch {
-      setError('Analysis failed. Please try again with a clearer image.');
+    } catch (error) {
+      setError(error instanceof Error ? error.message : 'Analysis failed. Please try again with a clearer image.');
     } finally {
       setLoading(false);
     }

@@ -9,7 +9,16 @@ const headers = {
 
 async function post<T>(path: string, body: unknown): Promise<T> {
   const res = await fetch(`${BASE}${path}`, { method: 'POST', headers, body: JSON.stringify(body) });
-  if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+  if (!res.ok) {
+    let message = `Request failed: ${res.status}`;
+    try {
+      const errorBody = await res.json() as { error?: unknown };
+      if (typeof errorBody.error === 'string' && errorBody.error) message = errorBody.error;
+    } catch {
+      // Preserve the status-based fallback when the server does not return JSON.
+    }
+    throw new Error(message);
+  }
   return res.json();
 }
 

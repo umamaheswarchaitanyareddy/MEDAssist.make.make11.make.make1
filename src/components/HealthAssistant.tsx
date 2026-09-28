@@ -37,8 +37,9 @@ export default function HealthAssistant() {
     try {
       const { reply } = await sendChat(newMessages);
       setMessages(prev => [...prev, { role: 'assistant', content: reply }]);
-    } catch {
-      setMessages(prev => [...prev, { role: 'assistant', content: 'Sorry, I encountered an error. Please try again.' }]);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Sorry, I encountered an error. Please try again.';
+      setMessages(prev => [...prev, { role: 'assistant', content: message }]);
     } finally {
       setLoading(false);
     }

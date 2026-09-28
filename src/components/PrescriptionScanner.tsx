@@ -34,8 +34,8 @@ export default function PrescriptionScanner() {
       const b64 = await toBase64(file);
       const { result: data } = await analyzePrescription(b64, mimeType);
       setResult(data);
-    } catch {
-      setError('Could not read this prescription. Please ensure the image is clear and try again.');
+    } catch (error) {
+      setError(error instanceof Error ? error.message : 'Could not read this prescription. Please ensure the image is clear and try again.');
     } finally {
       setLoading(false);
     }
