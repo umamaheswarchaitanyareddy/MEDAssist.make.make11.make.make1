@@ -1,7 +1,6 @@
 import { projectId, publicAnonKey } from '../../utils/supabase/info';
 
-const BASE = `https://${projectId}.supabase.co/functions/v1/server/make-server-ff2d8e1a`;
-
+const BASE = `https://${projectId}.supabase.co/functions/v1/server`;
 const headers = {
   'Content-Type': 'application/json',
   'Authorization': `Bearer ${publicAnonKey}`,
